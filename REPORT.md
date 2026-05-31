@@ -2,8 +2,8 @@
 
 ## Team
 
-- **Elliot Sezalory** — agent & backend, Sybilion integration, frontend wiring
-- **Fridolin Sitter** — data sourcing, decision logic, domain framing
+- **Elliot Sezalory**
+- **Fridolin Sitter**
 
 **Track:** Forecasting AI (Sybilion)
 
