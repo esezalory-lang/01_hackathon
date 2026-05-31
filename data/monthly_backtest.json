@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-05-30T16:14:59",
+  "use_mock": true,
+  "shock": null,
+  "horizon_months": 1,
+  "universe": 28,
+  "months": [
+    {
+      "month": "2026-05",
+      "n_pairs_forecast": 28,
+      "buy": [
+        {
+          "pair": "AUD/JPY",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 71.8,
+          "direction": "UP",
+          "current_price": 112.861901,
+          "predicted_next_month": 115.156919,
+          "actual_next_month": 113.562254,
+          "realized_direction": "UP",
+          "direction_hit": true
+        },
+        {
+          "pair": "AUD/NZD",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 52.4,
+          "direction": "UP",
+          "current_price": 1.213101,
+          "predicted_next_month": 1.22601,
+          "actual_next_month": 1.218496,
+          "realized_direction": "UP",
+          "direction_hit": true
+        },
+        {
+          "pair": "CAD/JPY",
+          "side": "BUY",
+          "signal": "WEAK",
+          "confidence": 43.3,
+          "direction": "UP",
+          "current_price": 115.688018,
+          "predicted_next_month": 116.935504,
+          "actual_next_month": 115.266083,
+          "realized_direction": "DOWN",
+          "direction_hit": false
+        }
+      ],
+      "sell": [
+        {
+          "pair": "GBP/AUD",
+          "side": "SELL",
+          "signal": "WEAK",
+          "confidence": 40.9,
+          "direction": "DOWN",
+          "current_price": 1.8968,
+          "predicted_next_month": 1.872905,
+          "actual_next_month": 1.878232,
+          "realized_direction": "DOWN",
+          "direction_hit": true
+        },
+        {
+          "pair": "EUR/AUD",
+          "side": "SELL",
+          "signal": "WEAK",
+          "confidence": 34.0,
+          "direction": "DOWN",
+          "current_price": 1.649091,
+          "predicted_next_month": 1.627595,
+          "actual_next_month": 1.624965,
+          "realized_direction": "DOWN",
+          "direction_hit": true
+        },
+        {
+          "pair": "USD/CAD",
+          "side": "SELL",
+          "signal": "WEAK",
+          "confidence": 11.7,
+          "direction": "DOWN",
+          "current_price": 1.3754,
+          "predicted_next_month": 1.3715,
+          "actual_next_month": 1.3695,
+          "realized_direction": "DOWN",
+          "direction_hit": true
+        }
+      ],
+      "headline": "2026-05  BUY AUD/JPY(72), AUD/NZD(52), CAD/JPY(43)  |  SELL GBP/AUD(41), EUR/AUD(34), USD/CAD(12)"
+    }
+  ],
+  "headline_direction_hit_rate": 0.833
+}

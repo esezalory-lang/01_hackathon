@@ -1,0 +1,43 @@
+{
+  "pair": "EUR/USD",
+  "source": "user MT5 monthly (2000-2026.02)",
+  "live": true,
+  "horizon_months": 1,
+  "history_basis": "all historical, month-end close",
+  "months": [
+    {
+      "month": "2026-01",
+      "call": "WEAK SELL",
+      "side": "SELL",
+      "strength": "WEAK",
+      "confidence": 47.0,
+      "current_close": 1.17456,
+      "predicted_close": 1.10299,
+      "actual_close": 1.18526,
+      "direction_hit": false
+    },
+    {
+      "month": "2026-02",
+      "call": "WEAK SELL",
+      "side": "SELL",
+      "strength": "WEAK",
+      "confidence": 34.1,
+      "current_close": 1.18526,
+      "predicted_close": 1.16312,
+      "actual_close": 1.1814,
+      "direction_hit": true
+    },
+    {
+      "month": "2026-03",
+      "call": "WEAK SELL",
+      "side": "SELL",
+      "strength": "WEAK",
+      "confidence": 1.7,
+      "current_close": 1.1814,
+      "predicted_close": 1.17556,
+      "actual_close": null,
+      "direction_hit": null
+    }
+  ],
+  "direction_hit_rate": 0.5
+}

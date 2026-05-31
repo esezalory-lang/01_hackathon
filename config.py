@@ -84,3 +84,32 @@ def pair_slug(pair):
 
 
 SLUG_TO_PAIR = {pair_slug(p): p for p in PAIR_UNIVERSE}
+
+# ---------------------------------------------------------------------------
+# 28 MAJOR PAIRS (initial FX backtest layer)
+# 8 majors -> C(8,2) = 28 pairs, all derivable from 7 FRED USD-leg series.
+# PRECEDENCE = conventional FX quoting hierarchy (higher = base currency).
+# MAJOR_USD_LEGS maps each non-USD major to (fred_id, invert) so we can express
+# every currency as USD-per-unit:  USD per X.  invert=True means the FRED series
+# is X-per-USD (e.g. DEXJPUS = JPY per USD) so USD-per-X = 1/value.
+# ---------------------------------------------------------------------------
+MAJORS_PRECEDENCE = ["EUR", "GBP", "AUD", "NZD", "USD", "CAD", "CHF", "JPY"]
+MAJOR_USD_LEGS = {
+    "EUR": ("DEXUSEU", False),  # USD per EUR
+    "GBP": ("DEXUSUK", False),  # USD per GBP
+    "AUD": ("DEXUSAL", False),  # USD per AUD
+    "NZD": ("DEXUSNZ", False),  # USD per NZD
+    "JPY": ("DEXJPUS", True),   # JPY per USD -> invert
+    "CHF": ("DEXSZUS", True),   # CHF per USD -> invert
+    "CAD": ("DEXCAUS", True),   # CAD per USD -> invert
+    # USD is the numeraire (USD per USD = 1.0)
+}
+
+# Forecast horizon for the initial layer: predict the UPCOMING month only.
+SOFT_HORIZON_BACKTEST = 1
+
+# Walk-forward monthly backtest: start history early enough that truncating to
+# the month BEFORE each 2026 target still leaves >=40 monthly points for Sybilion
+# (Jan 2026 target -> history ends Dec 2025; from 2022-01 that is 48 points).
+BACKTEST_FRED_START = "2022-01-01"
+BACKTEST_MONTHS = ["2026-01-01", "2026-02-01", "2026-03-01", "2026-04-01", "2026-05-01"]

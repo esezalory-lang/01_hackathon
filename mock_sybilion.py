@@ -183,6 +183,33 @@ _SHOCKS = {
 SHOCK_TYPES = list(_SHOCKS.keys())
 
 
+def _synth_from_series(ts, horizon=1):
+    """Realistic mock forecast from a real monthly series: drift + vol-scaled bands.
+    Lets the 28 majors produce varied STRONG/WEAK signals in mock mode."""
+    import statistics
+    items = sorted(ts.items())
+    vals = [v for _, v in items]
+    cur = vals[-1]
+    recent = vals[-7:] if len(vals) >= 7 else vals
+    drift = (recent[-1] - recent[0]) / max(1, len(recent) - 1)
+    diffs = [vals[i] - vals[i - 1] for i in range(max(1, len(vals) - 12), len(vals))]
+    vol = statistics.pstdev(diffs) if len(diffs) > 1 else abs(cur) * 0.01
+    forecast = []
+    for m in range(1, horizon + 1):
+        p50 = cur + drift * m
+        spread = 1.2816 * vol * (m ** 0.5)        # ~80% band (p10..p90)
+        forecast.append({"month": m, "p10": round(p50 - spread, 6),
+                         "p50": round(p50, 6), "p90": round(p50 + spread, 6)})
+    mape = round(min(40.0, max(2.0, (vol / cur) * 100 * 3)), 1) if cur else 12.0
+    return {
+        "current_price": round(cur, 6),
+        "history": [{"date": d, "value": v} for d, v in items[-6:]],
+        "forecast": forecast,
+        "drivers": [],
+        "backtest": {"mape": mape, "baseline_mape": round(mape * 1.6, 1)},
+    }
+
+
 def _generic(pair_meta):
     """Neutral, low-confidence forecast for a pair we have no canned data for.
     Keeps the mock from crashing when Layer 1 picks a pair outside the 5 above."""
@@ -201,10 +228,25 @@ def _generic(pair_meta):
     }
 
 
-def forecast_pair(pair_meta, timeseries=None, current_price=None, shock=None):
-    """Return a normalized D2 forecast for one pair (ignores timeseries)."""
+def forecast_pair(pair_meta, timeseries=None, current_price=None, shock=None,
+                  prefer_series=False, **kwargs):
+    """Return a normalized D2 forecast for one pair.
+
+    prefer_series=True forces a synthetic forecast from the supplied timeseries
+    even for canned slugs — required by the walk-forward backtest, which feeds
+    truncated history per month and must NOT use static canned data.
+    """
     slug = pair_meta["slug"] if isinstance(pair_meta, dict) else pair_meta
-    base = copy.deepcopy(_BASE[slug]) if slug in _BASE else _generic(pair_meta)
+    from config import SOFT_HORIZON_BACKTEST
+    if prefer_series and timeseries:
+        base = _synth_from_series(timeseries, horizon=SOFT_HORIZON_BACKTEST)
+    elif slug in _BASE:
+        base = copy.deepcopy(_BASE[slug])
+    elif timeseries:
+        # 28-major path: synthesize from the real series passed in.
+        base = _synth_from_series(timeseries, horizon=SOFT_HORIZON_BACKTEST)
+    else:
+        base = _generic(pair_meta)
 
     override = _SHOCKS.get(shock, {}).get(slug) if shock else None
     if override:

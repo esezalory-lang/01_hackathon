@@ -1,0 +1,115 @@
+{
+  "pair": "EUR/USD",
+  "source": "FRED DEXUSEU (monthly avg)",
+  "live": true,
+  "horizon_months": 6,
+  "history_basis": "rolling 72-month window (5y)",
+  "months": [
+    {
+      "month": "2026-01",
+      "call": "WEAK SELL",
+      "side": "SELL",
+      "strength": "WEAK",
+      "confidence": 13.6,
+      "horizon_direction": "DOWN",
+      "current": 1.171,
+      "next_month_p50": 1.1587,
+      "horizon6_p50": 1.14408,
+      "actual_next_month": 1.1744,
+      "next_month_hit": false,
+      "forecast_path": [
+        1.1587,
+        1.15482,
+        1.15179,
+        1.1488,
+        1.14611,
+        1.14408
+      ]
+    },
+    {
+      "month": "2026-02",
+      "call": "WEAK SELL",
+      "side": "SELL",
+      "strength": "WEAK",
+      "confidence": 8.8,
+      "horizon_direction": "DOWN",
+      "current": 1.1744,
+      "next_month_p50": 1.16518,
+      "horizon6_p50": 1.15813,
+      "actual_next_month": 1.1824,
+      "next_month_hit": false,
+      "forecast_path": [
+        1.16518,
+        1.16287,
+        1.1609,
+        1.15931,
+        1.15839,
+        1.15813
+      ]
+    },
+    {
+      "month": "2026-03",
+      "call": "WEAK SELL",
+      "side": "SELL",
+      "strength": "WEAK",
+      "confidence": 8.8,
+      "horizon_direction": "DOWN",
+      "current": 1.1824,
+      "next_month_p50": 1.1721,
+      "horizon6_p50": 1.16589,
+      "actual_next_month": 1.1557,
+      "next_month_hit": true,
+      "forecast_path": [
+        1.1721,
+        1.17031,
+        1.16908,
+        1.1678,
+        1.16674,
+        1.16589
+      ]
+    },
+    {
+      "month": "2026-04",
+      "call": "WEAK SELL",
+      "side": "SELL",
+      "strength": "WEAK",
+      "confidence": 1.4,
+      "horizon_direction": "DOWN",
+      "current": 1.1557,
+      "next_month_p50": 1.16376,
+      "horizon6_p50": 1.15325,
+      "actual_next_month": 1.1697,
+      "next_month_hit": true,
+      "forecast_path": [
+        1.16376,
+        1.16154,
+        1.15924,
+        1.15717,
+        1.15531,
+        1.15325
+      ]
+    },
+    {
+      "month": "2026-05",
+      "call": "WEAK SELL",
+      "side": "SELL",
+      "strength": "WEAK",
+      "confidence": 2.3,
+      "horizon_direction": "DOWN",
+      "current": 1.1697,
+      "next_month_p50": 1.16603,
+      "horizon6_p50": 1.16519,
+      "actual_next_month": 1.169,
+      "next_month_hit": true,
+      "forecast_path": [
+        1.16603,
+        1.16536,
+        1.16543,
+        1.16547,
+        1.16536,
+        1.16519
+      ]
+    }
+  ],
+  "next_month_hit_rate": 0.6
+}

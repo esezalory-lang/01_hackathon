@@ -1,0 +1,383 @@
+{
+  "live": true,
+  "horizon_months": 1,
+  "universe": 28,
+  "months": [
+    {
+      "month": "2026-01",
+      "n_pairs_forecast": 28,
+      "headline": "2026-01  BUY NZD/CAD(70), GBP/CHF(64), CAD/CHF(61)  |  SELL GBP/JPY(70), CAD/JPY(70), AUD/NZD(70)",
+      "buy": [
+        {
+          "pair": "NZD/CAD",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "UP",
+          "current_price": 0.798317,
+          "predicted_next_month": 0.81813,
+          "actual_next_month": 0.805741,
+          "direction_hit": true
+        },
+        {
+          "pair": "GBP/CHF",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 63.6,
+          "direction": "UP",
+          "current_price": 1.06681,
+          "predicted_next_month": 1.107498,
+          "actual_next_month": 1.068532,
+          "direction_hit": true
+        },
+        {
+          "pair": "CAD/CHF",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 61.0,
+          "direction": "UP",
+          "current_price": 0.577673,
+          "predicted_next_month": 0.615585,
+          "actual_next_month": 0.573234,
+          "direction_hit": false
+        }
+      ],
+      "sell": [
+        {
+          "pair": "GBP/JPY",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 208.72341,
+          "predicted_next_month": 196.433711,
+          "actual_next_month": 212.042117,
+          "direction_hit": false
+        },
+        {
+          "pair": "CAD/JPY",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 113.022834,
+          "predicted_next_month": 107.761051,
+          "actual_next_month": 113.753903,
+          "direction_hit": false
+        },
+        {
+          "pair": "AUD/NZD",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 69.7,
+          "direction": "DOWN",
+          "current_price": 1.147918,
+          "predicted_next_month": 1.099971,
+          "actual_next_month": 1.160827,
+          "direction_hit": false
+        }
+      ]
+    },
+    {
+      "month": "2026-02",
+      "n_pairs_forecast": 28,
+      "headline": "2026-02  BUY NZD/CAD(70), EUR/CHF(68), CAD/CHF(64)  |  SELL NZD/JPY(70), CAD/JPY(70), AUD/NZD(70)",
+      "buy": [
+        {
+          "pair": "NZD/CAD",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 69.9,
+          "direction": "UP",
+          "current_price": 0.805741,
+          "predicted_next_month": 0.818511,
+          "actual_next_month": 0.820108,
+          "direction_hit": true
+        },
+        {
+          "pair": "EUR/CHF",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 67.8,
+          "direction": "UP",
+          "current_price": 0.927071,
+          "predicted_next_month": 0.936422,
+          "actual_next_month": 0.913877,
+          "direction_hit": false
+        },
+        {
+          "pair": "CAD/CHF",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 63.6,
+          "direction": "UP",
+          "current_price": 0.573234,
+          "predicted_next_month": 0.605904,
+          "actual_next_month": 0.56631,
+          "direction_hit": false
+        }
+      ],
+      "sell": [
+        {
+          "pair": "NZD/JPY",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 91.656208,
+          "predicted_next_month": 87.840786,
+          "actual_next_month": 93.200551,
+          "direction_hit": false
+        },
+        {
+          "pair": "CAD/JPY",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 113.753903,
+          "predicted_next_month": 107.910222,
+          "actual_next_month": 113.644197,
+          "direction_hit": true
+        },
+        {
+          "pair": "AUD/NZD",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 1.160827,
+          "predicted_next_month": 1.098667,
+          "actual_next_month": 1.174904,
+          "direction_hit": false
+        }
+      ]
+    },
+    {
+      "month": "2026-03",
+      "n_pairs_forecast": 28,
+      "headline": "2026-03  BUY EUR/CHF(70), GBP/CHF(53), USD/CAD(52)  |  SELL AUD/USD(70), CAD/JPY(70), AUD/JPY(70)",
+      "buy": [
+        {
+          "pair": "EUR/CHF",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 69.8,
+          "direction": "UP",
+          "current_price": 0.913877,
+          "predicted_next_month": 0.939847,
+          "actual_next_month": 0.909883,
+          "direction_hit": false
+        },
+        {
+          "pair": "GBP/CHF",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 52.6,
+          "direction": "UP",
+          "current_price": 1.049521,
+          "predicted_next_month": 1.089038,
+          "actual_next_month": 1.050179,
+          "direction_hit": true
+        },
+        {
+          "pair": "USD/CAD",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 51.5,
+          "direction": "UP",
+          "current_price": 1.3648,
+          "predicted_next_month": 1.401113,
+          "actual_next_month": 1.372,
+          "direction_hit": true
+        }
+      ],
+      "sell": [
+        {
+          "pair": "AUD/USD",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 0.706,
+          "predicted_next_month": 0.648372,
+          "actual_next_month": 0.7017,
+          "direction_hit": true
+        },
+        {
+          "pair": "CAD/JPY",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 113.644197,
+          "predicted_next_month": 107.976529,
+          "actual_next_month": 115.657945,
+          "direction_hit": false
+        },
+        {
+          "pair": "AUD/JPY",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 109.50173,
+          "predicted_next_month": 98.365317,
+          "actual_next_month": 111.347651,
+          "direction_hit": false
+        }
+      ]
+    },
+    {
+      "month": "2026-04",
+      "n_pairs_forecast": 28,
+      "headline": "2026-04  BUY EUR/CHF(70), NZD/CAD(70), USD/CAD(46)  |  SELL AUD/JPY(70), CAD/JPY(70), AUD/USD(70)",
+      "buy": [
+        {
+          "pair": "EUR/CHF",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "UP",
+          "current_price": 0.909883,
+          "predicted_next_month": 0.938223,
+          "actual_next_month": 0.921256,
+          "direction_hit": true
+        },
+        {
+          "pair": "NZD/CAD",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "UP",
+          "current_price": 0.802346,
+          "predicted_next_month": 0.817015,
+          "actual_next_month": 0.804196,
+          "direction_hit": true
+        },
+        {
+          "pair": "USD/CAD",
+          "side": "BUY",
+          "signal": "WEAK",
+          "confidence": 46.1,
+          "direction": "UP",
+          "current_price": 1.372,
+          "predicted_next_month": 1.402562,
+          "actual_next_month": 1.3754,
+          "direction_hit": true
+        }
+      ],
+      "sell": [
+        {
+          "pair": "AUD/JPY",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 111.347651,
+          "predicted_next_month": 98.788735,
+          "actual_next_month": 112.861901,
+          "direction_hit": false
+        },
+        {
+          "pair": "CAD/JPY",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 115.657945,
+          "predicted_next_month": 108.309756,
+          "actual_next_month": 115.688018,
+          "direction_hit": false
+        },
+        {
+          "pair": "AUD/USD",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 69.9,
+          "direction": "DOWN",
+          "current_price": 0.7017,
+          "predicted_next_month": 0.649831,
+          "actual_next_month": 0.7093,
+          "direction_hit": false
+        }
+      ]
+    },
+    {
+      "month": "2026-05",
+      "n_pairs_forecast": 28,
+      "headline": "2026-05  BUY EUR/CHF(70), NZD/CAD(70), GBP/AUD(56)  |  SELL AUD/CAD(70), CAD/JPY(70), AUD/USD(70)",
+      "buy": [
+        {
+          "pair": "EUR/CHF",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "UP",
+          "current_price": 0.921256,
+          "predicted_next_month": 0.940278,
+          "actual_next_month": 0.915444,
+          "direction_hit": false
+        },
+        {
+          "pair": "NZD/CAD",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 69.9,
+          "direction": "UP",
+          "current_price": 0.804196,
+          "predicted_next_month": 0.816457,
+          "actual_next_month": 0.808553,
+          "direction_hit": true
+        },
+        {
+          "pair": "GBP/AUD",
+          "side": "BUY",
+          "signal": "STRONG",
+          "confidence": 55.6,
+          "direction": "UP",
+          "current_price": 1.8968,
+          "predicted_next_month": 2.062168,
+          "actual_next_month": 1.878232,
+          "direction_hit": false
+        }
+      ],
+      "sell": [
+        {
+          "pair": "AUD/CAD",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 0.975571,
+          "predicted_next_month": 0.911475,
+          "actual_next_month": 0.985218,
+          "direction_hit": false
+        },
+        {
+          "pair": "CAD/JPY",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 70.0,
+          "direction": "DOWN",
+          "current_price": 115.688018,
+          "predicted_next_month": 108.63825,
+          "actual_next_month": 115.266083,
+          "direction_hit": true
+        },
+        {
+          "pair": "AUD/USD",
+          "side": "SELL",
+          "signal": "STRONG",
+          "confidence": 69.7,
+          "direction": "DOWN",
+          "current_price": 0.7093,
+          "predicted_next_month": 0.644058,
+          "actual_next_month": 0.7194,
+          "direction_hit": false
+        }
+      ]
+    }
+  ],
+  "direction_hit_rate": 0.4
+}

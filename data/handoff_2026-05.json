@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-05-30T15:23:53",
+  "horizon_months": 1,
+  "recommended": [
+    {
+      "pair": "AUD/JPY",
+      "side": "BUY",
+      "rationale": "The strong BUY signal from Sybilion aligns with the forecast direction, suggesting a favorable outlook for the Australian dollar against the Japanese yen. The upcoming FOMC Rate Decision could strengthen the USD, indirectly supporting the JPY, which may weaken relative to other currencies.",
+      "confidence": 67.3,
+      "predicted_next_month": 115.677172,
+      "current_price": 113.562254
+    },
+    {
+      "pair": "EUR/USD",
+      "side": "SELL",
+      "rationale": "Sybilion's strong SELL signal is in agreement with the forecast direction, indicating a potential decline in the US dollar. The upcoming ECB Main Refinancing Rate and German Flash CPI could provide further evidence of economic divergence between the Eurozone and the US, supporting the sell side on EUR/USD.",
+      "confidence": 74.5,
+      "predicted_next_month": 1.06,
+      "current_price": 1.117
+    }
+  ],
+  "summary": "Recommended trades based on strong signals and forecast alignment, leveraging upcoming macroeconomic events."
+}

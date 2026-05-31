@@ -1,0 +1,372 @@
+{
+  "generated_at": "2026-05-31T00:39:04",
+  "live": true,
+  "window_months": 84,
+  "horizon_months": 6,
+  "universe": 28,
+  "n_forecast": 28,
+  "top_performers": [
+    {
+      "pair": "GBP/CAD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 3.9,
+      "mape": 0.589,
+      "current": 1.850468,
+      "horizon6_p50": 1.854029,
+      "move_pct": 0.19
+    },
+    {
+      "pair": "AUD/CAD",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 29.2,
+      "mape": 0.752,
+      "current": 0.985218,
+      "horizon6_p50": 0.95284,
+      "move_pct": -3.29
+    },
+    {
+      "pair": "NZD/CAD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 23.5,
+      "mape": 0.934,
+      "current": 0.808553,
+      "horizon6_p50": 0.814984,
+      "move_pct": 0.8
+    },
+    {
+      "pair": "EUR/CHF",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 8.8,
+      "mape": 0.942,
+      "current": 0.915444,
+      "horizon6_p50": 0.918892,
+      "move_pct": 0.38
+    },
+    {
+      "pair": "AUD/NZD",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 10.8,
+      "mape": 1.065,
+      "current": 1.218496,
+      "horizon6_p50": 1.205726,
+      "move_pct": -1.05
+    },
+    {
+      "pair": "CAD/JPY",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 14.5,
+      "mape": 1.452,
+      "current": 115.266083,
+      "horizon6_p50": 111.533911,
+      "move_pct": -3.24
+    },
+    {
+      "pair": "GBP/NZD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 9.7,
+      "mape": 1.482,
+      "current": 2.288618,
+      "horizon6_p50": 2.300434,
+      "move_pct": 0.52
+    },
+    {
+      "pair": "NZD/JPY",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 1.7,
+      "mape": 1.861,
+      "current": 93.198714,
+      "horizon6_p50": 92.93145,
+      "move_pct": -0.29
+    }
+  ],
+  "all_ranked": [
+    {
+      "pair": "GBP/CAD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 3.9,
+      "mape": 0.589,
+      "current": 1.850468,
+      "horizon6_p50": 1.854029,
+      "move_pct": 0.19
+    },
+    {
+      "pair": "AUD/CAD",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 29.2,
+      "mape": 0.752,
+      "current": 0.985218,
+      "horizon6_p50": 0.95284,
+      "move_pct": -3.29
+    },
+    {
+      "pair": "NZD/CAD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 23.5,
+      "mape": 0.934,
+      "current": 0.808553,
+      "horizon6_p50": 0.814984,
+      "move_pct": 0.8
+    },
+    {
+      "pair": "EUR/CHF",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 8.8,
+      "mape": 0.942,
+      "current": 0.915444,
+      "horizon6_p50": 0.918892,
+      "move_pct": 0.38
+    },
+    {
+      "pair": "AUD/NZD",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 10.8,
+      "mape": 1.065,
+      "current": 1.218496,
+      "horizon6_p50": 1.205726,
+      "move_pct": -1.05
+    },
+    {
+      "pair": "CAD/JPY",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 14.5,
+      "mape": 1.452,
+      "current": 115.266083,
+      "horizon6_p50": 111.533911,
+      "move_pct": -3.24
+    },
+    {
+      "pair": "GBP/NZD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 9.7,
+      "mape": 1.482,
+      "current": 2.288618,
+      "horizon6_p50": 2.300434,
+      "move_pct": 0.52
+    },
+    {
+      "pair": "NZD/JPY",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 1.7,
+      "mape": 1.861,
+      "current": 93.198714,
+      "horizon6_p50": 92.93145,
+      "move_pct": -0.29
+    },
+    {
+      "pair": "GBP/AUD",
+      "side": "BUY",
+      "signal": "STRONG",
+      "confidence": 58.3,
+      "mape": 1.873,
+      "current": 1.878232,
+      "horizon6_p50": 1.984515,
+      "move_pct": 5.66
+    },
+    {
+      "pair": "EUR/NZD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 16.3,
+      "mape": 1.894,
+      "current": 1.980014,
+      "horizon6_p50": 2.022634,
+      "move_pct": 2.15
+    },
+    {
+      "pair": "EUR/GBP",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 26.9,
+      "mape": 2.269,
+      "current": 0.865157,
+      "horizon6_p50": 0.849417,
+      "move_pct": -1.82
+    },
+    {
+      "pair": "NZD/USD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 1.7,
+      "mape": 2.356,
+      "current": 0.5904,
+      "horizon6_p50": 0.591459,
+      "move_pct": 0.18
+    },
+    {
+      "pair": "USD/CAD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 9.9,
+      "mape": 2.592,
+      "current": 1.3695,
+      "horizon6_p50": 1.381157,
+      "move_pct": 0.85
+    },
+    {
+      "pair": "CAD/CHF",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 16.3,
+      "mape": 2.602,
+      "current": 0.571815,
+      "horizon6_p50": 0.563255,
+      "move_pct": -1.5
+    },
+    {
+      "pair": "AUD/JPY",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 15.3,
+      "mape": 2.616,
+      "current": 113.562254,
+      "horizon6_p50": 109.159056,
+      "move_pct": -3.88
+    },
+    {
+      "pair": "AUD/USD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 9.7,
+      "mape": 2.791,
+      "current": 0.7194,
+      "horizon6_p50": 0.728408,
+      "move_pct": 1.25
+    },
+    {
+      "pair": "USD/JPY",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 3.3,
+      "mape": 2.846,
+      "current": 157.8569,
+      "horizon6_p50": 157.07481,
+      "move_pct": -0.5
+    },
+    {
+      "pair": "NZD/CHF",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 6.2,
+      "mape": 2.863,
+      "current": 0.462342,
+      "horizon6_p50": 0.459813,
+      "move_pct": -0.55
+    },
+    {
+      "pair": "GBP/JPY",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 3.9,
+      "mape": 2.991,
+      "current": 213.296243,
+      "horizon6_p50": 212.428288,
+      "move_pct": -0.41
+    },
+    {
+      "pair": "EUR/CAD",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 1.7,
+      "mape": 3.062,
+      "current": 1.600945,
+      "horizon6_p50": 1.604361,
+      "move_pct": 0.21
+    },
+    {
+      "pair": "GBP/USD",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 2.3,
+      "mape": 3.148,
+      "current": 1.3512,
+      "horizon6_p50": 1.349041,
+      "move_pct": -0.16
+    },
+    {
+      "pair": "GBP/CHF",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 2.1,
+      "mape": 3.286,
+      "current": 1.058125,
+      "horizon6_p50": 1.060429,
+      "move_pct": 0.22
+    },
+    {
+      "pair": "AUD/CHF",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 7.3,
+      "mape": 4.463,
+      "current": 0.563362,
+      "horizon6_p50": 0.556267,
+      "move_pct": -1.26
+    },
+    {
+      "pair": "CHF/JPY",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 15.6,
+      "mape": 5.912,
+      "current": 201.579492,
+      "horizon6_p50": 207.777924,
+      "move_pct": 3.07
+    },
+    {
+      "pair": "EUR/USD",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 3.9,
+      "mape": 6.405,
+      "current": 1.169,
+      "horizon6_p50": 1.159443,
+      "move_pct": -0.82
+    },
+    {
+      "pair": "EUR/JPY",
+      "side": "BUY",
+      "signal": "WEAK",
+      "confidence": 10.2,
+      "mape": 6.554,
+      "current": 184.534716,
+      "horizon6_p50": 187.018901,
+      "move_pct": 1.35
+    },
+    {
+      "pair": "EUR/AUD",
+      "side": "BUY",
+      "signal": "STRONG",
+      "confidence": 55.6,
+      "mape": 7.452,
+      "current": 1.624965,
+      "horizon6_p50": 2.379739,
+      "move_pct": 46.45
+    },
+    {
+      "pair": "USD/CHF",
+      "side": "SELL",
+      "signal": "WEAK",
+      "confidence": 7.9,
+      "mape": 8.054,
+      "current": 0.7831,
+      "horizon6_p50": 0.76958,
+      "move_pct": -1.73
+    }
+  ]
+}

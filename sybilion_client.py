@@ -84,6 +84,34 @@ def _q(quantiles, key, default=None):
     return default
 
 
+def extract_backtest(metrics_json):
+    """Pull MAPE/MASE from backtest_metrics.json.
+
+    Shape: {"data": {"12m": {"metrics": {"MAPE":..., "MASE":...}}, "24m": {...}}}.
+    We report the shortest (most recent) hindcast window available. MASE is the
+    error relative to a naive baseline (>1 = worse than naive, <1 = better)."""
+    if not metrics_json:
+        return {}
+    data = metrics_json.get("data", metrics_json)
+    if isinstance(data, dict) and any(k.endswith("m") and isinstance(v, dict)
+                                      for k, v in data.items()):
+        windows = sorted(((int(k[:-1]), v) for k, v in data.items()
+                          if k.endswith("m") and isinstance(v, dict)), key=lambda x: x[0])
+        if windows:
+            chosen_n, chosen = windows[0]
+            m = chosen.get("metrics", chosen)
+            return {
+                "mape": m.get("MAPE") or m.get("mape"),
+                "mase": m.get("MASE") or m.get("mase"),
+                "window": f"{chosen_n}m",
+            }
+    # flat fallback
+    return {
+        "mape": metrics_json.get("mape") or metrics_json.get("MAPE"),
+        "baseline_mape": metrics_json.get("baseline_mape") or metrics_json.get("naive_mape"),
+    }
+
+
 def _normalize(pair_meta, forecast_json, current_price, metrics_json=None):
     """Map forecast.json -> D2 (p10/p50/p90 per month)."""
     data = forecast_json.get("data", forecast_json)
@@ -95,12 +123,7 @@ def _normalize(pair_meta, forecast_json, current_price, metrics_json=None):
         bands.append({"month": i, "p10": _q(q, "0.10", p50), "p50": p50,
                       "p90": _q(q, "0.90", p50)})
 
-    backtest = {}
-    if metrics_json:
-        backtest = {
-            "mape": metrics_json.get("mape") or metrics_json.get("MAPE"),
-            "baseline_mape": metrics_json.get("baseline_mape") or metrics_json.get("naive_mape"),
-        }
+    backtest = extract_backtest(metrics_json)
 
     return {
         "pair": pair_meta["pair"],
@@ -115,16 +138,17 @@ def _normalize(pair_meta, forecast_json, current_price, metrics_json=None):
     }
 
 
-def forecast_pair(pair_meta, timeseries, current_price=None, shock=None):
-    """Submit one pair's monthly series to Sybilion and return its D2 forecast."""
+def forecast_pair(pair_meta, timeseries, current_price=None, shock=None, **kwargs):
+    """Submit one pair's monthly series to Sybilion and return its D2 forecast.
+    (Accepts/ignores prefer_series for a uniform signature with the mock.)"""
     if current_price is None and timeseries:
         current_price = timeseries[sorted(timeseries)[-1]]
     title = f"{pair_meta['pair']} monthly exchange rate ({pair_meta.get('quote', '')})".strip()
     description = (f"Monthly average {pair_meta['pair']} exchange rate from FRED series "
                   f"{pair_meta.get('fred_id')}, current month refreshed from an hourly feed.")
     job_id = submit(timeseries, title=title, description=description,
-                    soft_horizon=config.SOFT_HORIZON, backtest=True,
-                    driver_limit=config.SYBILION_DRIVER_LIMIT)
+                    soft_horizon=kwargs.get("soft_horizon", config.SOFT_HORIZON),
+                    backtest=True, driver_limit=config.SYBILION_DRIVER_LIMIT)
     poll(job_id)
     forecast_json = read_artifacts(job_id, "forecast.json")
     metrics_json = None

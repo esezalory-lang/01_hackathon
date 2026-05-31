@@ -1,60 +1,94 @@
-# Forecasting Decision Agent — Starter
+# Infineon FX Treasury Agent — Backend
 
-A decision agent on the Sybilion forecasting API. The engine decides, the LLM only
-narrates, and the agent adapts when an assumption changes. Subject is OPEN — you pick.
+A decision agent on top of the **Sybilion** probabilistic forecasting API, built for the
+Sybilion hackathon by **Team 43 Food** (Elliot Sezalory, Fridolin Sitter). It plays
+treasury for a power-semiconductor maker (Infineon): it picks which currency pairs matter,
+forecasts them, keeps only the high-confidence signals, turns those into concrete FX trades,
+and **backtests every recommendation on real data**.
 
-## You only edit two places
+> For the technical write-up — problem, approach, results, and honest caveats — see
+> **[REPORT.md](REPORT.md)**.
 
-| What | Where | When |
-|---|---|---|
-| **Your API keys** | `.env` (copy from `.env.example`) | now |
-| **Your domain/subject** | `config.py` → `ACTIVE_DOMAIN` | when you & your partner decide |
+## The pipeline (4 layers)
 
-Everything else runs unchanged.
+```
+Layer 1  Scope      Featherless (Qwen2.5-7B) + a live economic calendar     -> currency pairs
+Layer 2  Forecast   FRED monthly history (+ hourly current month) -> Sybilion -> confidence
+Layer 3  Strategy   Claude Sonnet on the strongest pairs (deterministic fallback) -> trades
+Layer 4  Backtest   walk-forward vs buy-and-hold on the pair's real FRED series -> track record
+```
 
-## 1. Put your credentials in `.env`  (the ONLY place keys go)
+## Run
 
 ```bash
-cp .env.example .env
-```
-Open `.env` and replace the placeholders:
-```
-SYBILION_API_KEY=<your sybilion key>
-FEATHERLESS_API_KEY=<your featherless key>
-```
-That's it. `config.py` reads them automatically; no other file needs your keys.
-`.env` is gitignored — never commit it, never paste keys in chat.
-
-## 2. Install + run on the mock (no domain needed yet)
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env          # optional — fill in keys (see below)
 
-python3 adaptation.py    # watch a decision flip under a shock
-python3 backtest.py      # policy vs naive baseline
-python3 explain.py       # plain-language narration (uses Featherless if key set)
-streamlit run app.py     # the dashboard
+uvicorn app:app --reload      # -> http://127.0.0.1:8000  (docs at /docs)
 ```
 
-## 3. When you pick a subject, fill `config.py` → `ACTIVE_DOMAIN`
+`USE_MOCK=1` (the default) serves realistic synthetic forecasts so the frontend and demo
+work with **no keys and no network**. `USE_MOCK=0` goes live against the real Sybilion API
+(needs `SYBILION_API_KEY`). Even in mock mode, Layer 1 calls Featherless and Layer 4 pulls
+FRED — both have offline fallbacks, so the app always runs.
 
-Set the title, description, keywords, and rename the actions to fit your decision.
-Then swap the data source: replace `mock_sybilion` with `sybilion_client` in
-`app.py` / `backtest.py`, drop your real monthly series into `data/series.csv`,
-and finish `_normalize()` in `sybilion_client.py` using one real forecast artifact.
+Keys live in `.env` only (read by `config.py`): `SYBILION_API_KEY`, `FEATHERLESS_API_KEY`,
+optional `ANTHROPIC_API_KEY` (Layer 3) and `TWELVEDATA_API_KEY` (hourly current month).
 
-## Files
+## HTTP API (CORS open to the Vite dev server on :5173)
+
+| Method | Path | Returns |
+|---|---|---|
+| GET  | `/` | service info + enabled endpoints |
+| GET  | `/scope` | Layer 1: model-picked currency pairs, resolved to FRED |
+| GET  | `/calendar` | live economic calendar grouped by currency |
+| GET  | `/signals?shock=` | every pair: forecast + confidence + signal (sorted) |
+| GET  | `/strongest?shock=` | only high-confidence pairs + their trades |
+| GET  | `/forecast/{slug}` | one pair (slug e.g. `eur_usd`) |
+| GET  | `/strategy?shock=` | trades for the strongest pairs |
+| GET  | `/backtest?shock=` | walk-forward P&L of the top pair's trade (real FRED) |
+| GET  | `/monthly-backtest?shock=` | walk-forward over all 28 pairs, Jan→May 2026, scored vs realized |
+| GET  | `/qwen-monthly?shock=` | Qwen-scoped monthly signals + monthly direction-hit track record |
+| POST | `/backtest/run` | Donchian breakout backtest on hourly EUR/USD, filtered by Sybilion direction |
+| POST | `/shock` `{ "type": "..." }` | re-run everything under a market shock |
+
+Shock types: `boj_hike`, `ecb_cut`, `china_deval` — the "change an assumption mid-run"
+demo. They re-bias the mock forecasts so signals and trades visibly flip.
+
+## Code structure
+
 ```
-config.py            <- KEYS read here (from .env) + ACTIVE_DOMAIN to fill
-.env.example         <- copy to .env, paste keys
-sybilion_client.py   real API client (confirmed schema)
-mock_sybilion.py     offline mock, same shape — build before data is ready
-decision_engine.py   the core logic — pure function, explicit thresholds
-adaptation.py        shock -> re-run -> diff (the live-demo capability)
-backtest.py          replay policy over history vs naive baseline
-explain.py           LLM narration via Featherless (key read from config)
-app.py               Streamlit dashboard (visible reasoning + shock buttons)
-data/                your series.csv + sourcing notes
+app.py                 FastAPI entrypoint — wires the layers to HTTP endpoints
+config.py              the ONE config file: keys (.env), pair universe, thresholds, horizons
+
+# data providers (mock + real, identical shape so step2 swaps via config.USE_MOCK)
+mock_sybilion.py       offline synthetic FX forecasts (default; powers the demo)
+sybilion_client.py     real Sybilion REST client
+calendar_client.py     live economic calendar (free ForexFactory/faireconomy feed)
+fred_client.py         monthly FX history from FRED (keyless daily CSV -> monthly mean)
+hourly_fx.py           refresh the current month's value from an hourly feed (Twelve Data)
+pairs28.py             build the 28 major FX pairs as monthly series from 7 FRED USD legs
+
+pipeline/              the 4 decision layers
+  step1_scope.py         Layer 1 — Featherless picks the pairs worth forecasting
+  step2_forecast.py      Layer 2 — forecast each pair + score confidence (STRONG/WEAK)
+  step3_strategy.py      Layer 3 — Claude Sonnet turns strong signals into FX trades
+  step4_backtest.py      Layer 4 — walk-forward backtest vs buy-and-hold on real FRED
+  monthly_backtest.py    walk-forward over all 28 pairs (Sybilion-only), scored vs realized
+  qwen_monthly.py        Qwen-scoped monthly signals + monthly direction-hit track record
+  donchian_backtest.py   Donchian breakout backtester for hourly EUR/USD (POST /backtest/run)
+
+scripts/               one-off runners (NOT imported by the app) — run from repo root as
+                       `python -m scripts.<name>`. These hit the REAL APIs and write to data/.
+
+data/                  generated artifacts + caches (backtest JSON the frontend reads,
+                       fx_cache/ and commodities/ CSVs regenerated by scripts/)
+docs/
+  CASE.md                the hackathon case brief (Sybilion)
+  AGENT_SPEC.md          the project spec / design notes
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).

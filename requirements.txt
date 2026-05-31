@@ -4,3 +4,6 @@ requests
 python-dotenv
 anthropic
 openai
+pandas
+openpyxl
+yfinance>=0.2.40

@@ -49,6 +49,8 @@ def _from_twelvedata(td_symbol):
 
 
 def _from_fred_daily(fred_id):
+    if not fred_id:           # derived crosses have no single FRED series
+        return None
     # Lazy import to avoid a hard dependency cycle.
     import fred_client
     prefix = _current_month_prefix()
