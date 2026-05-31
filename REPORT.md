@@ -60,6 +60,21 @@ signal     = STRONG if confidence >= threshold else WEAK
 
 ## How to run it
 
+**Full demo (backend + dashboard), one command** — a fresh clone of this repo alone is
+enough; the launcher fetches the UI for you (needs **Node 18+** and `git`):
+
+```bash
+./run_demo.sh                # mock backend + Lovable UI  →  http://localhost:8080
+USE_MOCK=0 ./run_demo.sh     # live Sybilion backend (needs SYBILION_API_KEY) + UI
+```
+
+`run_demo.sh` creates the `.venv`, starts the FastAPI agent on `:8000`, then finds the Lovable
+UI (sibling `../lovable_layer` if present, otherwise **clones** it from `LOVABLE_REPO` into
+`./lovable_layer`) and starts it on `:8080`, with Vite proxying `/agent/* → :8000` (no CORS
+setup). **Ctrl-C stops both.** Overrides: `LOVABLE_DIR=/path/to/ui`, `LOVABLE_REPO=<git url>`.
+
+**Backend only:**
+
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
