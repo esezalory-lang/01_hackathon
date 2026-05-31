@@ -1,4 +1,4 @@
-# Infineon FX Treasury Agent — Backend
+# Infineon Asset Forecaster Treasury Agent — Backend
 
 A decision agent on top of the **Sybilion** probabilistic forecasting API, built for the
 Sybilion hackathon by **Team 43 Food** (Elliot Sezalory, Fridolin Sitter). It plays
