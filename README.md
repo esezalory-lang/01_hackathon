@@ -41,6 +41,30 @@ act (or buffer instead). The exact confidence math is in [REPORT.md](REPORT.md).
 
 ## Run
 
+### Full demo — backend + UI, one command
+
+A fresh clone of **just this repo** can launch the whole thing — `run_demo.sh` fetches the UI
+for you. Needs **Node 18+** and `git`. From this directory:
+
+```bash
+./run_demo.sh            # mock backend (no keys/network) + UI  →  http://localhost:8080
+USE_MOCK=0 ./run_demo.sh # live Sybilion backend (needs SYBILION_API_KEY) + UI
+```
+
+What it does, in order:
+1. creates `.venv` and installs the Python deps (first run only);
+2. starts the FastAPI agent on `:8000`;
+3. finds the Lovable UI — uses a sibling `../lovable_layer` if present, otherwise **clones it**
+   into `./lovable_layer` (from `LOVABLE_REPO`, gitignored), then `npm install`s it;
+4. starts the UI on **`:8080`**, whose Vite dev server **proxies `/agent/* → :8000`** so the
+   dashboard reaches the agent same-origin (no CORS setup).
+
+**Ctrl-C stops both.** Overrides: `LOVABLE_DIR=/path/to/ui` to use an existing checkout,
+`LOVABLE_REPO=<git url>` to clone a fork. The dashboard also runs fully on baked data if the
+backend is down (it just shows a "Mock data" chip).
+
+### Backend only
+
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -83,6 +107,7 @@ requirement).
 ## Code structure
 
 ```
+run_demo.sh            one-command launcher: agent backend + the Lovable UI (../lovable_layer)
 app.py                 FastAPI entrypoint — wires the layers to HTTP endpoints
 config.py              the ONE config file: keys (.env), exposure universe, thresholds, horizons
 

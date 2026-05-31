@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T08:38:05",
+  "generated_at": "2026-05-31T09:19:15",
   "note": "Hardcoded Donchian (monthly) vs Sybilion forecast-driven backtest, per asset.",
   "assets": {
     "Copper": {
